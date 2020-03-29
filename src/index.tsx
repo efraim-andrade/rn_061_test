@@ -23,7 +23,7 @@ export default function App() {
       <StatusBar />
 
       <Container>
-        <Text>boilerplate ?</Text>
+        <Text>boilerplate ???</Text>
       </Container>
     </>
   );
