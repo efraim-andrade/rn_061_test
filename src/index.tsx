@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { StatusBar } from "react-native";
 import styled from "styled-components/native";
 
 export default function App() {
+  const [name, setName] = useState();
+
   useEffect(() => {
     async function fetchSomething() {
       try {
-        const response = await axios.get("https://swapi.co/api/people/1/");
+        const { data } = await axios.get("https://swapi.co/api/people/4/");
 
-        console.log(`fetchSomething`, response.data);
+        setName(data.name);
       } catch (error) {
         console.log(`error`, error);
       }
@@ -23,7 +25,8 @@ export default function App() {
       <StatusBar />
 
       <Container>
-        <Text>boilerplate ??????</Text>
+        <Label>Character</Label>
+        <Char>{name}</Char>
       </Container>
     </>
   );
@@ -37,7 +40,12 @@ const Container = styled.View`
   background: #333;
 `;
 
-const Text = styled.Text`
+const Label = styled.Text`
+  color: #ccc;
+  font-size: 18px;
+`;
+
+const Char = styled.Text`
   color: #fff;
   font-size: 24px;
 `;
